@@ -713,3 +713,31 @@ body.dark .settings-card input {
     background-color: #40364b;
     color: white;
 }
+/* FEEDBACK FORM */
+
+#feedbackForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#feedbackForm input,
+#feedbackForm select,
+#feedbackForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e8a6c2;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#feedbackForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#feedbackForm button {
+    align-self: flex-start;
+    margin-top: 5px;
+    padding: 12px 22px;
+}
