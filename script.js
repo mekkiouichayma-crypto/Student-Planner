@@ -728,10 +728,7 @@ saveNameBtn.addEventListener("click", function() {
 
 });
 
-
-// =============================
 // RESET APPLICATION
-// =============================
 
 let resetBtn = document.getElementById("resetBtn");
 
@@ -756,11 +753,16 @@ resetBtn.addEventListener("click", function() {
         displaySessions();
 
         alert("All data has been reset!");
-
     }
-    // SUPABASE CONNECTION
+
+});
+
+
+// SUPABASE CONNECTION
 
 const SUPABASE_URL = "https://thmfplljnfurbnlyorol.supabase.co";
+
+// حطي هنا نفس Publishable Key ديالك
 const SUPABASE_KEY = "sb_publishable_LcB-0SKQSrXBoycLUXCTNA_xo8uHGDF";
 
 const db = supabase.createClient(
@@ -768,7 +770,7 @@ const db = supabase.createClient(
     SUPABASE_KEY
 );
 
-});
+
 // FEEDBACK SYSTEM
 
 const feedbackForm = document.getElementById("feedbackForm");
