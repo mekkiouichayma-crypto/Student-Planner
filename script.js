@@ -758,5 +758,96 @@ resetBtn.addEventListener("click", function() {
         alert("All data has been reset!");
 
     }
+    // SUPABASE CONNECTION
+
+const SUPABASE_URL = "https://thmfplljnfurbnlyorol.supabase.co";
+const SUPABASE_KEY = "sb_publishable_LcB-0SKQSrXBoycLUXCTNA_xo8uHGDF";
+
+const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 });
+// FEEDBACK SYSTEM
+
+const feedbackForm = document.getElementById("feedbackForm");
+const feedbackMessage = document.getElementById("feedbackMessage");
+const reviewsList = document.getElementById("reviewsList");
+
+// Display approved reviews
+async function loadReviews() {
+
+    const { data, error } = await db
+        .from("feedback")
+        .select("name, comment, rating, created_at")
+        .eq("approved", true)
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        reviewsList.textContent = "Could not load reviews.";
+        console.error(error);
+        return;
+    }
+
+    reviewsList.innerHTML = "";
+
+    data.forEach(function(review) {
+
+        const card = document.createElement("div");
+        card.className = "settings-card";
+
+        const name = document.createElement("h3");
+        name.textContent = review.name;
+
+        const stars = document.createElement("p");
+        stars.textContent = "⭐".repeat(review.rating);
+
+        const comment = document.createElement("p");
+        comment.textContent = review.comment;
+
+        card.appendChild(name);
+        card.appendChild(stars);
+        card.appendChild(comment);
+
+        reviewsList.appendChild(card);
+    });
+}
+
+// Submit feedback
+feedbackForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("visitorName").value.trim();
+    const rating = Number(document.getElementById("visitorRating").value);
+    const comment = document.getElementById("visitorComment").value.trim();
+
+    if (name.length < 2 || comment.length < 3) {
+        feedbackMessage.textContent = "Please enter valid information.";
+        return;
+    }
+
+    feedbackMessage.textContent = "Sending...";
+
+    const { error } = await db
+        .from("feedback")
+        .insert([{
+            name: name,
+            rating: rating,
+            comment: comment
+        }]);
+
+    if (error) {
+        feedbackMessage.textContent = "Error sending feedback.";
+        console.error(error);
+        return;
+    }
+
+    feedbackMessage.textContent =
+        "Thank you! Your feedback is waiting for approval 💗";
+
+    feedbackForm.reset();
+});
+
+loadReviews();
