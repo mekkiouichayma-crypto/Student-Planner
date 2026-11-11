@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow - Student Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2 id="appName">StudyFlow 🌸</h2>
+
+        <ul>
+            <li>
+                <button class="nav-btn active" data-page="dashboard">
+                    🏠 Dashboard
+                </button>
+            </li>
+
+            <li>
+                <button class="nav-btn" data-page="tasks">
+                    📝 My Tasks
+                </button>
+            </li>
+
+            <li>
+                <button class="nav-btn" data-page="subjects">
+                    📚 Subjects
+                </button>
+            </li>
+
+            <li>
+                <button class="nav-btn" data-page="calendar">
+                    📅 Calendar
+                </button>
+            </li>
+
+            <li>
+                <button class="nav-btn" data-page="settings">
+                    ⚙️ Settings
+                </button>
+            </li>
+        </ul>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+        <!-- DASHBOARD PAGE -->
+        <section class="page active" id="dashboard">
+
+            <header>
+                <h1>Welcome Back! 🌷</h1>
+                <p>Let's organize your study day.</p>
+            </header>
+
+            <div class="stats">
+
+                <div class="card">
+                    <h3>Total Tasks</h3>
+                    <p id="totalTasks">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Completed</h3>
+                    <p id="completedTasks">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Remaining</h3>
+                    <p id="remainingTasks">0</p>
+                </div>
+
+            </div>
+
+            <div class="welcome-card">
+                <h2>Your Study Space 🌸</h2>
+                <p>Stay organized, stay motivated and achieve your goals!</p>
+            </div>
+
+        </section>
+
+
+        <!-- TASKS PAGE -->
+        <section class="page" id="tasks">
+
+            <h1>My Tasks 📝</h1>
+
+            <p class="subtitle">Manage your daily study tasks.</p>
+
+            <div class="task-container">
+
+                <div class="add-task">
+
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="Enter a new task..."
+                    >
+
+                    <button id="addBtn">Add Task +</button>
+
+                </div>
+
+                <p id="message"></p>
+
+                <div class="progress-section">
+
+                    <h3>My Progress 🌷</h3>
+
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+
+                    <p id="progressText">0% Completed</p>
+
+                </div>
+
+                <ul id="taskList"></ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBJECTS PAGE -->
+       
+<section class="page" id="subjects">
+
+    <h1>My Subjects 📚</h1>
+
+    <p class="subtitle">
+        Organize your university subjects.
+    </p>
+
+    <div class="subject-form">
+
+        <input
+            type="text"
+            id="subjectName"
+            placeholder="Subject name..."
+        >
+
+        <input
+            type="text"
+            id="subjectDescription"
+            placeholder="Description..."
+        >
+
+        <button id="addSubjectBtn">
+            Add Subject +
+        </button>
+
+    </div>
+
+    <p id="subjectMessage"></p>
+
+    <div class="subject-grid" id="subjectList">
+
+    </div>
+
+</section>
+
+
+        <!-- CALENDAR PAGE -->
+
+<section class="page" id="calendar">
+
+    <h1>My Calendar 📅</h1>
+
+    <p class="subtitle">
+        Plan your study sessions.
+    </p>
+
+    <div class="calendar-container">
+
+        <h2>Add New Session 🌸</h2>
+
+        <div class="calendar-form">
+
+            <input
+                type="text"
+                id="sessionTitle"
+                placeholder="Session title..."
+            >
+
+            <input
+                type="date"
+                id="sessionDate"
+            >
+
+            <input
+                type="time"
+                id="sessionTime"
+            >
+
+            <button id="addSessionBtn">
+                Add Session +
+            </button>
+
+        </div>
+
+        <p id="calendarMessage"></p>
+
+        <h2>My Study Schedule 📚</h2>
+
+        <div id="sessionList"></div>
+
+    </div>
+
+</section>
+
+        
+
+
+        
+
+
+        <!-- SETTINGS PAGE -->
+       <section class="page" id="settings">
+
+    <h1>Settings ⚙️</h1>
+
+    <div class="settings-card">
+
+        <h3>Application Name</h3>
+
+        <input
+            type="text"
+            id="newAppName"
+            placeholder="Enter new app name"
+        >
+
+        <button id="saveNameBtn">
+            Save Name
+        </button>
+
+        <p id="settingsMessage"></p>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h3>Appearance 🌙</h3>
+
+        <p>Change between light and dark mode.</p>
+
+        <button id="themeBtn">
+            Change Theme 🌙
+        </button>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h3>Reset Application</h3>
+
+        <p>Delete all your tasks, subjects and sessions.</p>
+
+        <button id="resetBtn" class="reset-btn">
+            Reset All Data
+        </button>
+
+    </div>
+
+</section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
