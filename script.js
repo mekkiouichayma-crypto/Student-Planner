@@ -780,7 +780,7 @@ const reviewsList = document.getElementById("reviewsList");
 // Display approved reviews
 async function loadReviews() {
 
-    const { data, error } = await 
+    const { data, error } 
         .from("feedback")
         .select("name, comment, rating, created_at")
         .eq("approved", true)
@@ -850,6 +850,6 @@ feedbackForm.addEventListener("submit", async function(event) {
         "Thank you! Your feedback is waiting for approval 💗";
 
     feedbackForm.reset();
-}
+});
 
 loadReviews();
