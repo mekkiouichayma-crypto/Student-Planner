@@ -832,7 +832,7 @@ feedbackForm.addEventListener("submit", async function(event) {
 
     feedbackMessage.textContent = "Sending...";
 
-    const { error } = await db
+    const { error } = await 
         .from("feedback")
         .insert([{
             name: name,
