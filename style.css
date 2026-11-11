@@ -741,3 +741,19 @@ body.dark .settings-card input {
     margin-top: 5px;
     padding: 12px 22px;
 }
+#feedbackForm button {
+    display: block;
+    width: fit-content;
+    margin: 10px 0;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e88caf;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#feedbackForm button:hover {
+    background-color: #d96f98;
+}
