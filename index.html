@@ -26,7 +26,11 @@
                     🏠 Dashboard
                 </button>
             </li>
-
+<li>
+    <button class="nav-btn" data-page="feedback">
+        ⭐ Feedback
+    </button>
+</li>
             <li>
                 <button class="nav-btn" data-page="tasks">
                     📝 My Tasks
@@ -277,11 +281,48 @@
     </div>
 
 </section>
+        <!-- FEEDBACK PAGE -->
+<section class="page" id="feedback">
+
+    <h1>Feedback & Reviews ⭐</h1>
+    <p>Share your experience with StudyFlow!</p>
+
+    <div class="settings-card">
+        <form id="feedbackForm">
+
+            <label>Your name</label>
+            <input type="text" id="visitorName"
+                   placeholder="Enter your name" required>
+
+            <label>Your rating</label>
+            <select id="visitorRating">
+                <option value="5">⭐⭐⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="1">⭐</option>
+            </select>
+
+            <label>Your comment</label>
+            <textarea id="visitorComment"
+                      placeholder="Write your feedback..."
+                      required></textarea>
+
+            <button type="submit">Submit Feedback 💗</button>
+        </form>
+
+        <p id="feedbackMessage"></p>
+    </div>
+
+    <h2>Visitors Reviews</h2>
+    <div id="reviewsList"></div>
+
+</section>
 
     </main>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 
 </body>
