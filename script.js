@@ -728,7 +728,10 @@ saveNameBtn.addEventListener("click", function() {
 
 });
 
+
+// =============================
 // RESET APPLICATION
+// =============================
 
 let resetBtn = document.getElementById("resetBtn");
 
@@ -753,16 +756,14 @@ resetBtn.addEventListener("click", function() {
         displaySessions();
 
         alert("All data has been reset!");
+
     }
 
 });
 
-
 // SUPABASE CONNECTION
 
 const SUPABASE_URL = "https://thmfplljnfurbnlyorol.supabase.co";
-
-// حطي هنا نفس Publishable Key ديالك
 const SUPABASE_KEY = "sb_publishable_LcB-0SKQSrXBoycLUXCTNA_xo8uHGDF";
 
 const db = supabase.createClient(
@@ -770,6 +771,7 @@ const db = supabase.createClient(
     SUPABASE_KEY
 );
 
+console.log("Supabase connected!");
 
 // FEEDBACK SYSTEM
 
@@ -777,10 +779,9 @@ const feedbackForm = document.getElementById("feedbackForm");
 const feedbackMessage = document.getElementById("feedbackMessage");
 const reviewsList = document.getElementById("reviewsList");
 
-// Display approved reviews
 async function loadReviews() {
 
-    const { data, error } 
+    const { data, error } = await db
         .from("feedback")
         .select("name, comment, rating, created_at")
         .eq("approved", true)
@@ -788,7 +789,6 @@ async function loadReviews() {
 
     if (error) {
         reviewsList.textContent = "Could not load reviews.";
-        console.error(error);
         return;
     }
 
@@ -816,7 +816,6 @@ async function loadReviews() {
     });
 }
 
-// Submit feedback
 feedbackForm.addEventListener("submit", async function(event) {
 
     event.preventDefault();
@@ -832,7 +831,7 @@ feedbackForm.addEventListener("submit", async function(event) {
 
     feedbackMessage.textContent = "Sending...";
 
-    const { error } = await 
+    const { error } = await db
         .from("feedback")
         .insert([{
             name: name,
